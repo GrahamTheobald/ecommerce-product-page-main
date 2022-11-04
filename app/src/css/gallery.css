@@ -1,0 +1,29 @@
+.gallery__current {
+    position: relative
+}
+
+.gallery__current__arrow {
+    position: absolute;
+    top: 50%;
+    translate: 0 -50%;
+    background-color: var(--White);
+    padding: .5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    height: 2.5rem;
+    width: 2.5rem
+}
+.gallery__current__arrow--next {
+    right: 1rem;
+}
+.gallery__current__arrow--previous {
+    left: 1rem;
+}
+.gallery__current__arrow img {
+    width: 40%;
+}
+.gallery__thumbnails {
+    display: none;
+}

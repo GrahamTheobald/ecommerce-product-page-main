@@ -1,0 +1,12 @@
+.quantity {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--LightGrayishBlue);
+    padding: 1rem;
+    border-radius: .5rem;
+}
+
+.quantity > p {
+    font-weight: 700;
+}

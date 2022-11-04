@@ -1,8 +1,9 @@
 import React from 'react'
 
-export default function Menu() {
+export default function Menu({hidden = true}) {
   return (
-    <div>
+    <div 
+      className={hidden ? "header__menu hidden" : "header__menu"}>
       <img 
         className="header__menu__close-menu-btn" 
         src="./images/icon-close.svg"

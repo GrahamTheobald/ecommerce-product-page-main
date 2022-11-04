@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import ThumbNails from './ThumbNails'
 import { IMGS } from '../App'
+import '../../css/gallery.css'
 
 export default function Gallery() {
   const [currentImg, setCurrentImg] = useState(0)
@@ -12,13 +13,17 @@ export default function Gallery() {
           src={IMGS[currentImg].main}
           alt="product" 
         />
-        <div className="gallery__current__arrow">
+        <div 
+          className="gallery__current__arrow
+            gallery__current__arrow--next">
           <img
             src="./images/icon-next.svg"
             alt="next"
           />
         </div>
-        <div className="gallery__current__arrow">
+        <div 
+          className="gallery__current__arrow
+            gallery__current__arrow--previous">
           <img
             src="./images/icon-previous.svg"
             alt="previous"

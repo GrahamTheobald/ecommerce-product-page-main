@@ -1,18 +1,24 @@
 import React from 'react'
 import Menu from './Menu'
+import Cart from '../Cart/Cart'
+import '../../css/header.css'
 
-export default function Header() {
+export default function Header({cart = false}) {
   return (
     <header className="header"> 
-      <div>
+      <div className="header__left">
         <img 
           className="header__menu-btn" 
           src="./images/icon-menu.svg"
           alt="open menu"
           />
+        <img
+          src="./images/logo.svg"
+          alt="logo"
+        />
         <Menu/>
       </div>
-      <div>
+      <div className="header__right">
         <img 
           className="header__cart-btn"
           src="./images/icon-cart.svg"
@@ -25,7 +31,7 @@ export default function Header() {
           />
         </div>
       </div>
-
+      { cart && <Cart/> }
     </header>
   )
 }

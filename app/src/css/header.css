@@ -1,0 +1,38 @@
+.header {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    justify-content: space-between;
+    height: 4.5rem
+}
+.header__left, .header__right {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+.header__photo {
+    width: 2rem;
+}
+.header__menu.hidden {
+    display: none;
+}
+@media screen and (max-width: 600px) {
+    .header__menu {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        right: 30%;
+        background-color: var(--White);
+        z-index: 20;
+        padding: 1rem;
+    }
+    .header__menu__links {
+        list-style: none;
+        margin-top: 2rem;
+        display: flex;
+        flex-direction: column;
+        font-weight: 700;
+        gap: 1.5rem;
+    }
+}

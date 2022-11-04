@@ -1,0 +1,18 @@
+.add-to-cart {
+    border: none;
+    outline: none;
+    font-family: inherit;
+    font-size: 1rem;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: center;
+    font-weight: 700;
+    color: var(--White);
+    background-color: var(--Orange);
+    border-radius: .5rem;
+}
+.add-to-cart > img {
+    filter: brightness(0) saturate(100%) invert(100%) sepia(100%) saturate(0%) hue-rotate(290deg) brightness(103%) contrast(102%)
+}

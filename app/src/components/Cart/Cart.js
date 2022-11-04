@@ -1,5 +1,6 @@
 import React from 'react'
 import CartItem from './CartItem'
+import '../../css/cart.css'
 
 export default function Cart({items}) {
   return (

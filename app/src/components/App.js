@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Header from "./Header/Header";
 import Gallery from "./Gallery/Gallery";
 import Info from "./Main/Info";
@@ -26,7 +26,6 @@ export const IMGS =
   ]
 
 export const ProductContext = React.createContext()
-
 const productContextValue = 
 {
   company: "Sneaker Company",
@@ -34,10 +33,11 @@ const productContextValue =
   description: "These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they’ll withstand everything the weather can offer.",
   currentPrice: "$125.00",
   discount: "50%",
-  previousPrice: "$250"
+  previousPrice: "$250.00"
 }
 
 function App() {
+  const [modal, setModal] = useState(false)
   return (
   <ProductContext.Provider value={productContextValue}>
     <>
@@ -46,7 +46,7 @@ function App() {
         <Gallery/>
         <Info/>
       </div>
-      <Cart/>
+      { modal && <div className="modal"/> }
     </>
   </ProductContext.Provider>
   );

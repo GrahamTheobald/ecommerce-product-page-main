@@ -1,0 +1,45 @@
+.info {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+}
+.info__company {
+    font-size: .8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--Orange);
+}
+.info__description {
+    color: var(--DarkGrayishBlue);
+    line-height: 1.5;
+}
+.info__price {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.info__price__current {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+.info__price__current__discount {
+    font-size: 1rem;
+    color: var(--Orange);
+    background-color: var(--PaleOrange);
+    padding: .3rem;
+    border-radius: .5rem;
+}
+.info__price__previous {
+    font-weight: 700;
+    color: var(--GrayishBlue);
+    text-decoration: line-through;
+}
+.info__cart-control {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}

@@ -1,8 +1,9 @@
 import React from 'react'
+import '../../css/quantity.css'
 
 export default function Quantity({quantity}) {
   return (
-    <div class_name="quantity">
+    <div className="quantity">
       <img 
         className="quantity__button"
         src="./images/icon-plus.svg"
