@@ -1,7 +1,6 @@
 .gallery__current {
     position: relative
 }
-
 .gallery__current__arrow {
     position: absolute;
     top: 50%;
@@ -26,4 +25,39 @@
 }
 .gallery__thumbnails {
     display: none;
+}
+
+@media screen and (min-width: 600px) {
+    .gallery {
+        padding-right: 3rem;
+        flex: 1;
+    }
+    .gallery__current {
+        margin-bottom: 2rem;
+        border-radius: 1rem;
+        overflow: hidden;
+    }
+    .gallery__current:hover {
+        cursor: pointer;
+    }
+    .gallery__current__arrow {
+        display: none;
+    }
+    .gallery__thumbnails {
+        display: flex;
+        gap: 2rem;
+    }
+    .gallery__thumbnails__nail {
+        border-radius: 1rem;
+        overflow: hidden;
+        transition: .2s;
+    }
+    .gallery__thumbnails__nail:hover {
+        cursor: pointer;
+        opacity: .6;
+    }
+    .gallery__thumbnails__nail.selected {
+        border: 3px solid var(--Orange);
+        opacity: .6;
+    }
 }

@@ -10,3 +10,14 @@
 .quantity > p {
     font-weight: 700;
 }
+
+@media screen and (min-width: 600px) {
+    .quantity {
+        flex: 3;
+    }
+    .quantity__button:hover {
+        transition: .2s;
+        cursor: pointer;
+        opacity: .6;
+    }
+}

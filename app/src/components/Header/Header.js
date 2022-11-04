@@ -19,11 +19,13 @@ export default function Header({cart = false}) {
         <Menu/>
       </div>
       <div className="header__right">
-        <img 
-          className="header__cart-btn"
-          src="./images/icon-cart.svg"
-          alt="toggle cart"
-        />
+        <div 
+          className="header__cart-btn">
+          <img 
+            src="./images/icon-cart.svg"
+            alt="toggle cart"
+          />
+        </div>
         <div className="header__photo">
           <img 
             src="./images/image-avatar.png"

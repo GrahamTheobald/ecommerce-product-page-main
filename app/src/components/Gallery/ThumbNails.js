@@ -6,7 +6,7 @@ export default function ThumbNails({photos}) {
       {
         photos.map((photo, i) => {
           return  <div key={i}        
-                    className="gallery__thumnails__nail">
+                    className="gallery__thumbnails__nail">
                     <img 
                       src={photo.thumbnail}
                       alt="product thumbnail"
