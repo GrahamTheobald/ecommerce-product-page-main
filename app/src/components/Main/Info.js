@@ -1,10 +1,14 @@
 import React, {useState, useContext} from 'react'
 import AddToCart from './AddToCart'
 import Quantity from './Quantity'
-import { ProductContext } from '../App'
+import data from '../../data.json'
+import {IMGS, HandlerContext} from '../App'
 import '../../css/info.css'
 
+const usd = new Intl.NumberFormat("en-US", {style: "currency", currency: "USD"})
+
 export default function Info() {
+  const {handleAdd} = useContext(HandlerContext)
   const [quantity, setQuantity] = useState(0)
   const {
     company,
@@ -13,7 +17,16 @@ export default function Info() {
     currentPrice,
     discount,
     previousPrice,
-  } = useContext(ProductContext)
+  } = data[0]
+  const product = {
+    title,
+    currentPrice,
+    image: IMGS[0].thumbnail
+  }
+  function handleSetQuantity(n) {
+    if (n === 0) setQuantity(n)
+    else setQuantity(prev => Math.max(prev + n, 0))
+  }
 
   return (
     <div className="info">
@@ -24,14 +37,14 @@ export default function Info() {
       </p>
       <div className="info__price">
         <div className="info__price__current">
-          <p>{currentPrice}</p>
+          <p>{usd.format(currentPrice)}</p>
           <p className="info__price__current__discount">{discount}</p>
         </div>
-        <p className="info__price__previous">{previousPrice}</p>
+        <p className="info__price__previous">{usd.format(previousPrice)}</p>
       </div>
       <div className="info__cart-control">
-        <Quantity quantity={quantity}/>
-        <AddToCart/>
+        <Quantity quantity={quantity} handler={handleSetQuantity}/>
+        <AddToCart product={product} quantity={quantity} handler={handleAdd} resetQ={handleSetQuantity}/>
       </div>
     </div>
   )

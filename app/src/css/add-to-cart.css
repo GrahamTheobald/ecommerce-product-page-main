@@ -21,9 +21,4 @@
     .add-to-cart {
         flex: 5;
     }
-    .add-to-cart:hover {
-        cursor: pointer;
-        transition: .2s;
-        opacity: .6;
-    }
 }

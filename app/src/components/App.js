@@ -2,7 +2,6 @@ import React, {useState} from 'react'
 import Header from "./Header/Header";
 import Gallery from "./Gallery/Gallery";
 import Info from "./Main/Info";
-import Cart from "./Cart/Cart";
 import '../css/app.css'
 
 export const IMGS = 
@@ -25,30 +24,45 @@ export const IMGS =
     },
   ]
 
-export const ProductContext = React.createContext()
-const productContextValue = 
-{
-  company: "Sneaker Company",
-  title: "Fall Limited Edition Sneakers",
-  description: "These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they’ll withstand everything the weather can offer.",
-  currentPrice: "$125.00",
-  discount: "50%",
-  previousPrice: "$250.00"
-}
+export const HandlerContext = React.createContext()
+export const CartContext = React.createContext()
 
 function App() {
   const [modal, setModal] = useState(false)
+  const [cart, setCart] = useState([])
+  const handlerContextValue = {
+    handleModal,
+    handleAdd,
+    cartTotal: cart.reduce((a, b) => a + b.quantity, 0)
+  }
+  function handleModal(bool) {
+    setModal(bool)
+  }
+  function handleAdd(product, quantity) {
+    if (quantity === 0) return 
+    const newCart = [...cart]
+    const index = newCart.findIndex(i => i.product.title === product.title)
+    if (index !== -1) {
+      newCart[index].quantity += quantity
+    }
+    else {
+      newCart.push({product, quantity})
+    }
+    setCart(newCart)
+  }
   return (
-  <ProductContext.Provider value={productContextValue}>
+    <CartContext.Provider value={cart}>
+    <HandlerContext.Provider value={handlerContextValue}>
     <>
-      <Header/>
+      <Header cart={null}/>
       <div className="main__container">
         <Gallery/>
         <Info/>
       </div>
       { modal && <div className="modal"/> }
     </>
-  </ProductContext.Provider>
+    </HandlerContext.Provider>
+    </CartContext.Provider>
   );
 }
 

@@ -17,6 +17,20 @@
 .header__menu.hidden {
     display: none;
 }
+.header__cart-btn {
+    position: relative;
+}
+.header__cart-btn-notify {
+    position: absolute;
+    top: 0;
+    right: -.2rem;
+    translate: 0 -50%;
+    background-color: var(--Orange);
+    color: var(--White);
+    font-size: .7rem;
+    padding: 0 .3rem;
+    border-radius: 999px; 
+}
 @media screen and (min-width: 600px) {
     .header__menu-btn {
         display: none;

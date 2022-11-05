@@ -1,10 +1,16 @@
-import React from 'react'
+import React, {useContext} from 'react'
+import { HandlerContext } from '../App'
 
-export default function Menu({hidden = true}) {
+export default function Menu({hidden = true, handleClose}) {
+  const {handleModal} = useContext(HandlerContext)
   return (
     <div 
       className={hidden ? "header__menu hidden" : "header__menu"}>
-      <img 
+      <img
+        onClick={() => {
+          handleModal(false)
+          handleClose()
+        }}
         className="header__menu__close-menu-btn" 
         src="./images/icon-close.svg"
         alt="close menu"
