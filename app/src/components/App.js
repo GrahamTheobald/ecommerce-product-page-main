@@ -35,6 +35,7 @@ function App() {
   const handlerContextValue = {
     handleModal,
     handleAdd,
+    handleDelete,
     cartTotal: cart.reduce((a, b) => a + b.quantity, 0)
   }
   useEffect(() => {
@@ -47,12 +48,18 @@ function App() {
     setLightbox(bool)
     setModal(bool)
   }, [windowWidth])
-  useEffect(() => handleLightbox(lightbox), [windowWidth, lightbox, handleLightbox])
+  useEffect(() => handleLightbox(lightbox), [lightbox, handleLightbox])
   function updateWindowWidth() {
     setWindowWidth(window.innerWidth)
   }
   function handleModal(bool) {
     setModal(bool)
+  }
+  function handleDelete(product) {
+    const newCart = [...cart]
+    const index = newCart.findIndex(i => i.product.title === product.title)
+    newCart.pop(index)
+    setCart(newCart)
   }
   function handleAdd(product, quantity) {
     if (quantity === 0) return 
