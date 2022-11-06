@@ -3,17 +3,46 @@ import ThumbNails from './ThumbNails'
 import { IMGS } from '../App'
 import '../../css/gallery.css'
 
-export default function Gallery() {
+export default function Gallery({lightbox = false, handle}) {
   const [currentImg, setCurrentImg] = useState(0)
+  function handleClick(i, thumbnail=false) {
+    if (thumbnail) setCurrentImg(i)
+    else {
+      setCurrentImg(prev => {
+        if (prev + i > IMGS.length - 1) {
+          return 0
+        } 
+        else if (prev + i < 0) {
+          return IMGS.length - 1
+        }
+        else {
+          return prev + i
+        }
+      })
+    }
+  }
 
   return (
-    <div className="gallery">
-      <div className="gallery__current">
+    <div className={lightbox? "gallery lightbox" : "gallery"}>
+      {
+        lightbox && 
         <img
-          src={IMGS[currentImg].main}
-          alt="product" 
+          onClick={() => handle(false)} 
+          className="gallery__lightbox-close"
+          src="./images/icon-close.svg"
+          alt="close lightbox"
         />
-        <div 
+      }
+      <div className="gallery__current">
+        <div className="gallery__current__wrapper">
+          <img
+            onClick={() => handle(true)}
+            src={IMGS[currentImg].main}
+            alt="product" 
+            />
+        </div>
+        <div
+          onClick={() => handleClick(1)} 
           className="gallery__current__arrow
             gallery__current__arrow--next">
           <img
@@ -22,6 +51,7 @@ export default function Gallery() {
           />
         </div>
         <div 
+          onClick={() => handleClick(-1)} 
           className="gallery__current__arrow
             gallery__current__arrow--previous">
           <img
@@ -30,7 +60,7 @@ export default function Gallery() {
           />
         </div>
       </div>
-      <ThumbNails photos={IMGS}/>
+      <ThumbNails photos={IMGS} current={currentImg} handle={handleClick}/>
     </div>
   )
 }

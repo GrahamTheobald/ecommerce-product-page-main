@@ -20,7 +20,9 @@ export default function AddToCart(props) {
         src='./images/icon-cart.svg'
         alt='cart'
       />
-      Add to cart
+        <div>
+          Add to cart
+        </div>
     </button>
   )
 }

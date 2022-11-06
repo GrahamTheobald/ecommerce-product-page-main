@@ -5,7 +5,6 @@ import '../../css/cart.css'
 
 export default function Cart({hidden}) {
   const cart = useContext(CartContext)
-  console.log(cart)
   return (
       <div className="cart">
         <div className="cart__title">Cart</div>

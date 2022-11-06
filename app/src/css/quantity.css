@@ -5,6 +5,7 @@
     background-color: var(--LightGrayishBlue);
     padding: 1rem;
     border-radius: .5rem;
+    min-width: 6rem;
 }
 
 .quantity > p {

@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect, useCallback} from 'react'
 import Header from "./Header/Header";
 import Gallery from "./Gallery/Gallery";
 import Info from "./Main/Info";
@@ -30,10 +30,26 @@ export const CartContext = React.createContext()
 function App() {
   const [modal, setModal] = useState(false)
   const [cart, setCart] = useState([])
+  const [lightbox, setLightbox] = useState(false)
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth)
   const handlerContextValue = {
     handleModal,
     handleAdd,
     cartTotal: cart.reduce((a, b) => a + b.quantity, 0)
+  }
+  useEffect(() => {
+    window.addEventListener("resize", updateWindowWidth)
+  }, [])
+  const handleLightbox = useCallback((bool) => {
+    if (windowWidth <= 600) {
+      bool = false
+    } 
+    setLightbox(bool)
+    setModal(bool)
+  }, [windowWidth])
+  useEffect(() => handleLightbox(lightbox), [windowWidth, lightbox, handleLightbox])
+  function updateWindowWidth() {
+    setWindowWidth(window.innerWidth)
   }
   function handleModal(bool) {
     setModal(bool)
@@ -56,7 +72,11 @@ function App() {
     <>
       <Header cart={null}/>
       <div className="main__container">
-        <Gallery/>
+        {
+          lightbox &&
+          <Gallery lightbox={lightbox} handle={handleLightbox}/>
+        }
+        <Gallery lightbox={false} handle={handleLightbox}/>
         <Info/>
       </div>
       { modal && <div className="modal"/> }
